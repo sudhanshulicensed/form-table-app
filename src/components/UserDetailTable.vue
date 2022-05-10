@@ -1,14 +1,15 @@
 <template>
-    
+    <div class="detail-table">
+
+    </div>
 </template>
 
 <script>
 export default {
-    name="AddDetail",
-    
+    name: "DetailTable",
 }
 </script>
 
 <style>
-
+    
 </style>

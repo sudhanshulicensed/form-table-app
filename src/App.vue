@@ -1,24 +1,39 @@
 <template>
   <div id="app">
-    <AddDetail />
-    <EditDetail />
+    <DashBoard />
+    <DetailTable />
   </div>
 </template>
 
 <script>
 
-import AddDetail from "./components/AddDetails.vue"
-import EditDetail from "./components/EditDetails.vue"
+import DashBoard from "./components/DashBoard.vue"
+import DetailTable from "./components/UserDetailTable.vue"
 
 export default {
   name: 'App',
   components: {
-    AddDetail,
-    EditDetail,
+    DashBoard,
+    DetailTable,
   }
 }
 </script>
 
 <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
 
+  #app{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: aquamarine;
+  }
 </style>
