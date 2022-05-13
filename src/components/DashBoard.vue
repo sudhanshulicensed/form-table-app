@@ -20,18 +20,19 @@
                 </div> -->
                 <div class="form-date">
                     <label for="date-select" class="form-in">Date of birth</label>
-                <input v-model="date" type="date" name="date-of-birth" id="date-select" class="form-in">
+                    <input v-model="date" type="date" name="date-of-birth" id="date-select" class="form-in">
                 </div>
                 <div class="checkbox">
                     <input type="checkbox" name="Confirmation" id="condition" class="form-in">
-                <label for="condition" class="form-in">Approve Terms and Conditions</label>
+                    <label for="condition" class="form-in">Approve Terms and Conditions</label>
                 </div>
             </form>
         </div>
         <div class="add-user-btn">
-            <p @click="addUserData" >Add User</p>
+            <p @click="addUserData(isEdit)" >{{ isEdit ? "Edit" : "Add" }} User</p>
         </div>
-        <DetailTable :userObject="userData" @del="delUser" />
+        <DetailTable :userObject="userData" @del="delUser" @edit="editUser"/>
+        <!-- <EditUserForm :userObject="userData" /> -->
     </div>
 </template>
 
@@ -46,11 +47,13 @@ export default {
     },
     data(){
         return {
+            isEdit: false,
             email: "",
             name: "",
             password: "",
             date: "",
             userData: [],
+            editIndex: null,
         }
     },
     methods: {
@@ -58,9 +61,26 @@ export default {
             console.log("User Clicked");
         },
 
-        addUserData() {
-            console.log("Pushing");
-            if(this.email && this.name && this.password && this.date) {
+        editUser(index) {
+            this.editIndex = index;
+            console.log(index);
+            this.isEdit = true;
+            console.log(this.isEdit)
+            this.email=this.userData[index].eMail
+            this.name=this.userData[index].nAme
+            this.password=this.userData[index].pAssword
+            this.date=this.userData[index].dAte
+        },
+
+        addUserData(isEditOn) {
+            if(isEditOn) {
+                this.userData[this.editIndex].eMail = this.email;
+                this.userData[this.editIndex].nAme = this.name;
+                this.userData[this.editIndex].pAssword = this.password;
+                this.userData[this.editIndex].dAte = this.date;            
+            }
+            else {
+                if(this.email && this.name && this.password && this.date) {
                 this.userData.push({
                     eMail: this.email,
                     nAme: this.name,
@@ -70,6 +90,9 @@ export default {
                 console.log(this.userData);
                 console.log("Pushed");
             }
+            }
+            console.log("Pushing");
+            
             this.email = "";
             this.name = "";
             this.password = "";

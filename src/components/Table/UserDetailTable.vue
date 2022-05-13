@@ -38,6 +38,7 @@ export default {
         },
 
         editUser(index) {
+            console.log("Ran")
             this.$emit("edit", index)
         }
     }
