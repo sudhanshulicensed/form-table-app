@@ -31,7 +31,7 @@
         <div class="add-user-btn">
             <p @click="addUserData" >Add User</p>
         </div>
-        <DetailTable :userObject="userData" />
+        <DetailTable :userObject="userData" @del="delUser" />
     </div>
 </template>
 
@@ -74,7 +74,10 @@ export default {
             this.name = "";
             this.password = "";
             this.date = "";
+        },
 
+        delUser(index) {
+            this.userData.splice(index, 1);
         }
     }
 }

@@ -11,7 +11,7 @@
                 <td>{{ detail.eMail }}</td>
                 <td>{{ detail.nAme }}</td>
                 <td>{{ detail.pAssword }}</td>
-                <td>Edit</td>
+                <td @click="editUser(index)">Edit</td>
                 <td @click="deleteUser(index)">Delete</td>
             </tr>
         </table>
@@ -34,11 +34,13 @@ export default {
     },
     methods: {
         deleteUser(index) {
-            console.log(index)
-            // this.userObject.splice(index, 1)
+            this.$emit("del", index)
+        },
+
+        editUser(index) {
+            this.$emit("edit", index)
         }
     }
-
 }
 </script>
 
