@@ -1,20 +1,22 @@
 <template>
   <div id="app">
     <DashBoard />
-    <DetailTable />
   </div>
 </template>
 
 <script>
 
 import DashBoard from "./components/DashBoard.vue"
-import DetailTable from "./components/UserDetailTable.vue"
 
 export default {
   name: 'App',
   components: {
     DashBoard,
-    DetailTable,
+  },
+  data(){
+    return {
+
+    }
   }
 }
 </script>
@@ -28,12 +30,17 @@ export default {
   #app{
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
+    row-gap: 20px;
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 80%;
+    width: 50%;
     margin-right: auto;
     margin-left: auto;
-    background-color: aquamarine;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
   }
 </style>

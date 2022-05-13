@@ -1,5 +1,7 @@
 <template>
-    
+    <div class="edit-user-form">
+        
+    </div>
 </template>
 
 <script>
